@@ -1,5 +1,5 @@
 // always prompt-sync so the terminal can read the new main.js file.
-const prompt = require('prompt-sync')();
+const prompt = require('prompt-sync')()
 
 // these are the first few lines that will be shown to the user letting user know what is going on
 console.log(" ")
@@ -30,14 +30,15 @@ while (input !== 3){
     input = Number(prompt(" > "))
     console.log(" ")
     console.log(" =============================================== ")
-
     console.log(" ")
+
+        // this breaks down what will happen when user selects 1 to create a new item
         if (input === 1){
 
             // prompt user to create item
             console.log(" ~ Create A New To-Do Item: ~ ")
             console.log(" ")
-            let toDo = (prompt(" Enter The New To-Do Item : "))
+            let toDo = (prompt(" Enter The New To-Do Item: "))
             console.log(" ")
             console.log(" =============================================== ")
             console.log(" ")
@@ -49,27 +50,28 @@ while (input !== 3){
             complete.push(" [Incomplete] ")
             console.log(" You Currently Have " + toDoList.length + " To-Do Item(s). ")
 
+        // prints each item as a list, in numerical order, as well as whether comepleted or incomplete. The (`${}`) is done to combine each array into one complete string.
         for (let i = 0; i < toDoList.length; i++){
-            
-            // prints each array as a string
             console.log(` ${i + 1} ${complete[i]} ${toDoList[i]} `)}
         
+        // same thing as input 1
         } else if (input === 2){
 
-            // write out what you want the user to see when they press 2.
+            // prompt user to choose which item to mark completed
             console.log(" Complete A To-Do Item: ")
             console.log(" ")
-            let compeleted = (prompt(" What Items Would You Like To Complete? "))
+            let compeleted = (prompt(" What Items Would You Like To Mark Complete? "))
 
-            // minus one because index starts at 0 but the user will start select numbers starting with 1
+            // this allow the computer to know how to choose the right item. The (- 1) is placed in here because the index starts at 0 but the user will start selecting numbers starting with 1. Making sure it converts properly
             complete[compeleted - 1] = (" [Completed] ")
             console.log(" ")
             console.log(" =============================================== ")
             console.log(" ")
 
-            // print the amount of to do items entered.
-            console.log(" You Currently Have " + toDoList.length + " To-Do Item(s). ");
+            // prints the amount of to do items currently entered.
+            console.log(" You Currently Have " + toDoList.length + " To-Do Item(s). ")
 
+            // same as above
             for (let i = 0; i < toDoList.length; i++){
             console.log(` ${i + 1} ${complete[i]} ${toDoList[i]} `)}
         }
